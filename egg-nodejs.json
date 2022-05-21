@@ -1,0 +1,45 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2022-05-20T20:38:46-04:00",
+    "name": "NodeJS",
+    "author": "fyrenodes@gmail.com",
+    "description": "Official NodeJS egg of FyreNodes.",
+    "features": null,
+    "images": [
+        "ghcr.io\/parkervcp\/yolks:nodejs_17",
+        "ghcr.io\/parkervcp\/yolks:nodejs_16",
+        "ghcr.io\/parkervcp\/yolks:nodejs_15",
+        "ghcr.io\/parkervcp\/yolks:nodejs_14",
+        "ghcr.io\/parkervcp\/yolks:nodejs_12"
+    ],
+    "file_denylist": [],
+    "startup": "\/usr\/local\/bin\/yarn install; {{STARTUP_CMD}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"ready\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\napt update; apt upgrade -y\r\napt install -y git curl jq file unzip make gcc g++ python python-dev libtool\r\n\r\n\/usr\/local\/bin\/npm install --location=global yarn\r\n\r\necho -e \"Installation has completed.\"\r\nexit 0",
+            "container": "node:14-buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Command",
+            "description": "Startup command to use when running the application.",
+            "env_variable": "STARTUP_CMD",
+            "default_value": "node index.js",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100"
+        }
+    ]
+}

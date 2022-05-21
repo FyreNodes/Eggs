@@ -1,0 +1,43 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2022-05-20T20:39:09-04:00",
+    "name": "Java",
+    "author": "fyrenodes@gmail.com",
+    "description": "Official Java egg for FyreNodes.",
+    "features": null,
+    "images": [
+        "ghcr.io\\\/parkervcp\\\/yolks:java_16",
+        "ghcr.io\\\/parkervcp\\\/yolks:java_11",
+        "ghcr.io\\\/parkervcp\\\/yolks:java_8"
+    ],
+    "file_denylist": [],
+    "startup": "java -Dterminal.jline=false -Dterminal.ansi=true {{STARTUP_CMD}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"ready\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\napt update; apt upgrade -y\r\napt install -y curl jq\r\n\r\necho -e \"Installation has completed.\"\r\nexit 0",
+            "container": "debian:buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Command",
+            "description": "Startup command to use when running the application.",
+            "env_variable": "STARTUP_CMD",
+            "default_value": "-jar app.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100"
+        }
+    ]
+}

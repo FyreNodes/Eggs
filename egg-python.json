@@ -1,0 +1,54 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2022-05-20T20:39:01-04:00",
+    "name": "Python",
+    "author": "fyrenodes@gmail.com",
+    "description": "Official Python egg for FyreNodes.",
+    "features": null,
+    "images": [
+        "ghcr.io\/parkervcp\/yolks:python_3.10",
+        "ghcr.io\/parkervcp\/yolks:python_3.9",
+        "ghcr.io\/parkervcp\/yolks:python_3.8",
+        "ghcr.io\/parkervcp\/yolks:python_3.7",
+        "ghcr.io\/parkervcp\/yolks:python_2.7"
+    ],
+    "file_denylist": [],
+    "startup": "pip install -U --prefix .local -r {{REQ_FILE}}; {{STARTUP_CMD}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"ready\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\napt update; apt upgrade -y\r\napt install -y git curl jq file unzip make gcc g++ python python-dev libtool\r\n\r\necho -e \"Installation has completed.\"\r\nexit 0",
+            "container": "python:3.8-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Command",
+            "description": "Startup command to use when running the application.",
+            "env_variable": "STARTUP_CMD",
+            "default_value": "python main.py",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100"
+        },
+        {
+            "name": "Requirements File",
+            "description": "Python requirements file to use when installing dependencies.",
+            "env_variable": "REQ_FILE",
+            "default_value": "requirements.txt",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:35"
+        }
+    ]
+}
