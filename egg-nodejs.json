@@ -1,21 +1,21 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "version": "PTDL_v1",
+        "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-05-20T20:38:46-04:00",
+    "exported_at": "2022-06-20T05:47:27-04:00",
     "name": "NodeJS",
     "author": "fyrenodes@gmail.com",
     "description": "Official NodeJS egg of FyreNodes.",
     "features": null,
-    "images": [
-        "ghcr.io\/parkervcp\/yolks:nodejs_17",
-        "ghcr.io\/parkervcp\/yolks:nodejs_16",
-        "ghcr.io\/parkervcp\/yolks:nodejs_15",
-        "ghcr.io\/parkervcp\/yolks:nodejs_14",
-        "ghcr.io\/parkervcp\/yolks:nodejs_12"
-    ],
+    "docker_images": {
+        "NodeJS 17": "ghcr.io\/parkervcp\/yolks:nodejs_17",
+        "NodeJS 16": "ghcr.io\/parkervcp\/yolks:nodejs_16",
+        "NodeJS 15": "ghcr.io\/parkervcp\/yolks:nodejs_15",
+        "NodeJS 14": "ghcr.io\/parkervcp\/yolks:nodejs_14",
+        "NodeJS 12": "ghcr.io\/parkervcp\/yolks:nodejs_12"
+    },
     "file_denylist": [],
     "startup": "\/usr\/local\/bin\/yarn install; {{STARTUP_CMD}}",
     "config": {
@@ -39,7 +39,8 @@
             "default_value": "node index.js",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:100"
+            "rules": "nullable|string|max:100",
+            "field_type": "text"
         }
     ]
 }
